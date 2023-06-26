@@ -1,5 +1,10 @@
 package me.danjono.inventoryrollback.gui.menu;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import com.github.Anon8281.universalScheduler.UniversalRunnable;
 import com.nuclyon.technicallycoded.inventoryrollback.InventoryRollbackPlus;
 import me.danjono.inventoryrollback.config.ConfigData;
 import me.danjono.inventoryrollback.config.MessageData;
@@ -85,7 +90,7 @@ public class EnderChestBackupMenu {
         try {
 
             // Add items, 5 per tick
-            new BukkitRunnable() {
+            new UniversalRunnable() {
 
                 int invPosition = 0;
                 int itemPos = (pageNumber - 1) * 27;

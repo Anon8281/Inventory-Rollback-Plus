@@ -12,6 +12,7 @@ loadbefore:
   - AngelChest
   - SavageDeathChest
 
+folia-supported: true
 commands:
   inventoryrollbackplus:
     description: ${project.description}
