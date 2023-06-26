@@ -125,7 +125,7 @@ public class MainInventoryBackupMenu {
 					// Place item safely
 					final int finalPos = position;
 					final int finalItem = i;
-					Future<Void> placeItemFuture = main.getServer().getScheduler().callSyncMethod(main,
+					Future<Void> placeItemFuture = InventoryRollbackPlus.getScheduler().callSyncMethod(
 							() -> {
 								inventory.setItem(finalPos, armour[finalItem]);
 								return null;
@@ -143,7 +143,7 @@ public class MainInventoryBackupMenu {
 						// Place item safely
 						final int finalPos = position;
 						final int finalItem = item;
-						Future<Void> placeItemFuture = main.getServer().getScheduler().callSyncMethod(main,
+						Future<Void> placeItemFuture = InventoryRollbackPlus.getScheduler().callSyncMethod(
 								() -> {
 									inventory.setItem(finalPos, mainInventory[finalItem]);
 									return null;
