@@ -1,7 +1,9 @@
 package com.nuclyon.technicallycoded.inventoryrollback;
 
-import com.nuclyon.technicallycoded.inventoryrollback.UpdateChecker.UpdateResult;
+import com.github.Anon8281.universalScheduler.UniversalScheduler;
+import com.github.Anon8281.universalScheduler.scheduling.schedulers.TaskScheduler;
 import com.nuclyon.technicallycoded.inventoryrollback.commands.Commands;
+import com.nuclyon.technicallycoded.inventoryrollback.UpdateChecker.UpdateResult;
 import com.nuclyon.technicallycoded.inventoryrollback.util.TimeZoneUtil;
 import com.tcoded.lightlibs.bukkitversion.BukkitVersion;
 import com.tcoded.lightlibs.bukkitversion.MCVersion;
@@ -27,6 +29,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class InventoryRollbackPlus extends InventoryRollback {
 
     private static InventoryRollbackPlus instancePlus;
+    private static TaskScheduler SCHEDULER;
 
     private TimeZoneUtil timeZoneUtil = null;
 
@@ -42,6 +45,7 @@ public class InventoryRollbackPlus extends InventoryRollback {
     @Override
     public void onEnable() {
         instancePlus = this;
+        SCHEDULER = UniversalScheduler.getScheduler(this);
         InventoryRollback.setInstance(instancePlus);
 
         // Load Utils
@@ -141,7 +145,7 @@ public class InventoryRollbackPlus extends InventoryRollback {
     }
 
     public void checkUpdate() {
-        Bukkit.getScheduler().runTaskAsynchronously(InventoryRollback.getInstance(), () -> {
+        InventoryRollbackPlus.getScheduler().runTaskAsynchronously(() -> {
             InventoryRollbackPlus.getInstance().getConsoleSender().sendMessage(MessageData.getPluginPrefix() + "Checking for updates...");
 
             final UpdateResult result = new UpdateChecker(getInstance(), 85811).getResult();
@@ -233,7 +237,9 @@ public class InventoryRollbackPlus extends InventoryRollback {
     }
 
     // GETTERS
-
+    public static TaskScheduler getScheduler() {
+        return SCHEDULER;
+    }
     public boolean isShuttingDown() {
         return shuttingDown.get();
     }
