@@ -108,10 +108,9 @@ public class MainInventoryBackupMenu {
 						itemPos++;
 					}
 				}
-			}.runTaskTimer(main, 0, 1);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			staff.sendMessage(MessageData.getPluginPrefix() + MessageData.getErrorInventory());
+			}.runTaskTimer(main, 1, 1);
+		} catch (Exception e) {
+		    staff.sendMessage(MessageData.getPluginPrefix() + MessageData.getErrorInventory());
 		    return;
 		}
 
