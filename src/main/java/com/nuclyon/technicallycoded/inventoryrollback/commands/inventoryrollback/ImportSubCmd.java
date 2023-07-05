@@ -40,7 +40,7 @@ public class ImportSubCmd extends IRPCommand {
             }
 
             // Execute import
-            Bukkit.getScheduler().runTaskAsynchronously(main, LegacyBackupConversionUtil::convertOldBackupData);
+            InventoryRollbackPlus.getScheduler().runTaskAsynchronously(LegacyBackupConversionUtil::convertOldBackupData);
 
             // Reset suggestion to not visible
             suggestConfirm.set(false);
@@ -49,7 +49,6 @@ public class ImportSubCmd extends IRPCommand {
         } else {
             sender.sendMessage(MessageData.getPluginPrefix() + MessageData.getNoPermission());
         }
-        return;
     }
 
     public static boolean shouldShowConfirmOption() {
