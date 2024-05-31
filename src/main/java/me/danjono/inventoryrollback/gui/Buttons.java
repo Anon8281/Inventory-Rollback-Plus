@@ -125,6 +125,11 @@ public class Buttons {
         return restoreAllInventoryDisabled;
     }
 
+    private void hidePotionEffects(ItemMeta meta){
+        if (InventoryRollbackPlus.getInstance().getVersion().isAtLeast(EnumNmsVersion.v1_20_R4)) meta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
+        else meta.addItemFlags(ItemFlag.valueOf("HIDE_POTION_EFFECTS"));
+    }
+
     public ItemStack nextButton(String displayName, LogType logType, int page, List<String> lore) {
         ItemStack button = new ItemStack(getPageSelectorIcon());
         BannerMeta meta = (BannerMeta) button.getItemMeta();
@@ -134,7 +139,7 @@ public class Buttons {
         assert meta != null;
         meta.setPatterns(patterns);
 
-        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        hidePotionEffects(meta);
 
         if (displayName != null) {
             meta.setDisplayName(displayName);
@@ -163,7 +168,7 @@ public class Buttons {
         assert meta != null;
         meta.setPatterns(patterns);
 
-        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        hidePotionEffects(meta);
 
         if (displayName != null) {
             meta.setDisplayName(displayName);
@@ -194,7 +199,7 @@ public class Buttons {
         assert meta != null;
         meta.setPatterns(patterns);
 
-        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        hidePotionEffects(meta);
 
         if (displayName != null) {
             meta.setDisplayName(displayName);
@@ -224,7 +229,7 @@ public class Buttons {
         assert meta != null;
         meta.setPatterns(patterns);
 
-        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        hidePotionEffects(meta);
 
         if (displayName != null) {
             meta.setDisplayName(displayName);
@@ -256,7 +261,7 @@ public class Buttons {
         assert meta != null;
         meta.setPatterns(patterns);
 
-        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        hidePotionEffects(meta);
 
         if (displayName != null) {
             meta.setDisplayName(displayName);
@@ -281,7 +286,7 @@ public class Buttons {
         assert meta != null;
         meta.setPatterns(patterns);
 
-        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        hidePotionEffects(meta);
 
         if (displayName != null) {
             meta.setDisplayName(displayName);
