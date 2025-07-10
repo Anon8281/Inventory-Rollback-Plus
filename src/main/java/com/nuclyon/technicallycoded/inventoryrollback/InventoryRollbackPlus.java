@@ -92,7 +92,7 @@ public class InventoryRollbackPlus extends InventoryRollback {
         getServer().getPluginManager().registerEvents(new ClickGUI(), this);
         getServer().getPluginManager().registerEvents(new EventLogs(), this);
         // Run after all plugin enable
-        getServer().getScheduler().runTask(this, EventLogs::patchLowestHandlers);
+        SCHEDULER.runTask(EventLogs::patchLowestHandlers);
 
         // PaperLib
         if (!PaperLib.isPaper()) {
